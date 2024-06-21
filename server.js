@@ -32,12 +32,27 @@ app.get('/api/notes', (req, res) => {
 app.post('api/notes', (res, req) => {
   console.info(`${req.method} request received to add a new note`);
   const { title, text } = req.body;
-  if (title, text) {
+  if (title && text) {
     const newNote = {
       title,
       text,
       note_id: uuid(),
     };
+// fs read and write files from module 11 sovled student data persistence activity
+  fs.readFile(`./db/db.json`, `utf8`, (error, data) => {
+    if (error) {
+      return console.log(error);
+    } else {
+      const parsedNote = JSON.parse(data);
+      parsedNote.push(newNote);
+      fs.writeFile(
+        './db/db.json',
+        JSON.stringify(parsedNote),
+        (writeErr) =>
+          writeErr
+            ? console.error(writeErr) : console.info('Successfully updated your note!')
+  });
+
 
   const response = {
     status: 'success',
