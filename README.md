@@ -7,7 +7,7 @@ This project serves to help the user create and take notes.
 This app can be accessed with the link provided. No sign-up or login required.
 
 ## Credits
-* [Xander Rapstine - provided starter code]((https://github.com/coding-boot-camp/miniature-eureka))
+* [Xander Rapstine - provided starter code](https://github.com/coding-boot-camp/miniature-eureka)
 
 ## Links
 [Website Link](https://memiscavage.github.io/NoteTakerApp/)
