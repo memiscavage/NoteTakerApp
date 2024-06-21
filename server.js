@@ -28,9 +28,27 @@ app.get('/api/notes', (req, res) => {
   res.json(db);
 )};
 
-//Post request
+//Post request, from module 11 solved student POST fetch activity
 app.post('api/notes', (res, req) => {
-  
+  console.info(`${req.method} request received to add a new note`);
+  const { title, text } = req.body;
+  if (title, text) {
+    const newNote = {
+      title,
+      text,
+      note_id: uuid(),
+    };
+
+  const response = {
+    status: 'success',
+    body: newNote,
+  };
+  console.log(response);
+    res.status(201).json(response);
+  } else {
+    res.status(500).json('Error in posting note');
+  }
+
 });
 
 
