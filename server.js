@@ -2,7 +2,8 @@ const express = require("express");
 const path = require('path');
 const app = express();
 const PORT = 3001;
-const fs = require('fs')
+const fs = require('fs');
+const newID = require('./api/uuid.js')
 
 //Connect db file to server
 const db = require("./db/db.json")
@@ -29,8 +30,8 @@ app.get('/api/notes', (req, res) => {
 
 //Post request
 app.post('api/notes', (res, req) => {
-  res.json(`${req.method} request received to add a note`);
-}
+  
+});
 
 
 app.listen(PORT, () =>
