@@ -29,7 +29,7 @@ app.get('/api/notes', (req, res) => {
 });
 
 //Post request, from module 11 solved student POST fetch activity
-app.post('api/notes', (res, req) => {
+app.post('/api/notes', (res, req) => {
   console.info(`${req.method} request received to add a new note`);
   const { title, text } = req.body;
   if (title && text) {
@@ -39,7 +39,7 @@ app.post('api/notes', (res, req) => {
       note_id: uuid(),
     };
     // fs read and write files from module 11 sovled student data persistence activity
-    fs.readFile(`./db/db.json`, `utf8`, (error, data) => {
+    fs.readFile('./db/db.json', 'utf8', (error, data) => {
       if (error) {
         return console.log(error);
       } else {
