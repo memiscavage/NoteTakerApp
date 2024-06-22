@@ -17,16 +17,16 @@ app.use(express.static('public'));
 //Get requests
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/index.html'))
-)};
+});
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'))
-)};
+});
 app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/pages/notes.html'))
-)};
+});
 app.get('/api/notes', (req, res) => {
   res.json(db);
-)};
+});
 
 //Post request, from module 11 solved student POST fetch activity
 app.post('api/notes', (res, req) => {
@@ -38,27 +38,29 @@ app.post('api/notes', (res, req) => {
       text,
       note_id: uuid(),
     };
-// fs read and write files from module 11 sovled student data persistence activity
-  fs.readFile(`./db/db.json`, `utf8`, (error, data) => {
-    if (error) {
-      return console.log(error);
-    } else {
-      const parsedNote = JSON.parse(data);
-      parsedNote.push(newNote);
-      fs.writeFile(
-        './db/db.json',
-        JSON.stringify(parsedNote),
-        (writeErr) =>
-          writeErr
-            ? console.error(writeErr) : console.info('Successfully updated your note!')
-  });
+    // fs read and write files from module 11 sovled student data persistence activity
+    fs.readFile(`./db/db.json`, `utf8`, (error, data) => {
+      if (error) {
+        return console.log(error);
+      } else {
+        const parsedNote = JSON.parse(data);
+        parsedNote.push(newNote);
+        fs.writeFile(
+          './db/db.json',
+          JSON.stringify(parsedNote),
+          (writeErr) =>
+            writeErr
+              ? console.error(writeErr) : console.info('Successfully updated your note!')
+        )
+      }
+    })
 
 
-  const response = {
-    status: 'success',
-    body: newNote,
-  };
-  console.log(response);
+    const response = {
+      status: 'success',
+      body: newNote,
+    };
+    console.log(response);
     res.status(201).json(response);
   } else {
     res.status(500).json('Error in posting note');
