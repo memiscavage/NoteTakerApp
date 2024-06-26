@@ -24,9 +24,7 @@ app.get('/notes', (req, res) => {
 app.get('/api/notes', (req, res) => {
   res.json(db);
 });
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'))
-});
+
 
 //Post request, from module 11 solved student POST fetch activity
 app.post('/api/notes', (res, req) => {
@@ -66,6 +64,10 @@ app.post('/api/notes', (res, req) => {
     res.status(500).json('Error in posting note');
   }
 
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'))
 });
 
 
